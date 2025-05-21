@@ -18,14 +18,6 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
-// Sert les fichiers frontend buildés
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-
-// Pour gérer les routes frontend (SPA)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
-});
-
 // Connexion à MongoDB
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
